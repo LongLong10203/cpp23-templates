@@ -1,3 +1,18 @@
+#ifndef DISJOINT_SET_UNION_HPP
+#define DISJOINT_SET_UNION_HPP
+
+#include <chrono>
+#include <concepts>
+#include <cstddef>
+#include <cstdint>
+#include <functional>
+#include <numeric>
+#include <ranges>
+#include <tuple>
+#include <unordered_map>
+#include <utility>
+#include <vector>
+
 template <std::equality_comparable T = int>
 struct disjoint_set_union : std::vector<int> {
     struct hasher {
@@ -73,10 +88,12 @@ struct disjoint_set_union : std::vector<int> {
 
     std::vector<std::vector<T>> groups() {
         std::vector<std::vector<T>> g(size());
-        for (auto [v, x] : std::views::enumerate(ids)) {
-            g[root(v)].push_back(x);
+        for (std::size_t v = 0; v < ids.size(); ++v) {
+            g[root(static_cast<int>(v))].push_back(ids[v]);
         }
         std::erase_if(g, std::ranges::empty);
         return g;
     }
 };
+
+#endif // DISJOINT_SET_UNION_HPP

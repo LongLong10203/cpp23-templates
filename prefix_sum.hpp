@@ -1,3 +1,14 @@
+#ifndef PREFIX_SUM_HPP
+#define PREFIX_SUM_HPP
+
+#include <concepts>
+#include <cstddef>
+#include <initializer_list>
+#include <ranges>
+#include <stdexcept>
+#include <type_traits>
+#include <vector>
+
 template <class T>
 struct prefix_sum : std::vector<T> {
     using std::vector<T>::operator[];
@@ -24,3 +35,5 @@ struct prefix_sum : std::vector<T> {
 
 template <std::ranges::input_range R>
 prefix_sum(R&&) -> prefix_sum<std::ranges::range_value_t<R>>;
+
+#endif // PREFIX_SUM_HPP

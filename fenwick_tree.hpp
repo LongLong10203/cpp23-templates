@@ -1,3 +1,15 @@
+#ifndef FENWICK_TREE_HPP
+#define FENWICK_TREE_HPP
+
+#include <concepts>
+#include <cstddef>
+#include <initializer_list>
+#include <ranges>
+#include <span>
+#include <stdexcept>
+#include <type_traits>
+#include <vector>
+
 template <class T>
 struct fenwick_tree : std::vector<T> {
     using base = std::vector<T>;
@@ -70,3 +82,5 @@ private:
 
     T sum(std::size_t l, std::size_t r) const { return prefix(r + 1) - prefix(l); }
 };
+
+#endif // FENWICK_TREE_HPP

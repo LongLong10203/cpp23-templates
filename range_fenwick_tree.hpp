@@ -1,3 +1,15 @@
+#ifndef RANGE_FENWICK_TREE_HPP
+#define RANGE_FENWICK_TREE_HPP
+
+#include <array>
+#include <concepts>
+#include <cstddef>
+#include <initializer_list>
+#include <ranges>
+#include <span>
+#include <stdexcept>
+#include <vector>
+
 template <class T>
 struct range_fenwick_tree : std::vector<std::array<T, 2>> {
     using base = std::vector<std::array<T, 2>>;
@@ -90,3 +102,5 @@ private:
     T sum(std::size_t l, std::size_t r) const { return prefix(r + 1) - prefix(l); }
     void add(std::size_t l, std::size_t r, const T& k) { update(l, k); update(r + 1, -k); }
 };
+
+#endif // RANGE_FENWICK_TREE_HPP

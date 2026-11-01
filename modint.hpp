@@ -1,3 +1,14 @@
+#ifndef MODINT_HPP
+#define MODINT_HPP
+
+#include <cassert>
+#include <concepts>
+#include <cstdint>
+#include <istream>
+#include <ostream>
+#include <type_traits>
+#include <utility>
+
 template <std::uint32_t M> requires (M <= (1u << 31))
 struct modint {
     using value_type = std::uint32_t;
@@ -110,3 +121,5 @@ private:
 };
 
 using mint = modint<998244353>;
+
+#endif // MODINT_HPP
