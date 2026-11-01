@@ -277,4 +277,4 @@ template <std::uint32_t MOD, convolution_detail::Coefficient T>
     return std::vector<Result>(std::from_range, first_transform);
 }
 
-#endif
+#endif // CONVOLUTION_HPP
